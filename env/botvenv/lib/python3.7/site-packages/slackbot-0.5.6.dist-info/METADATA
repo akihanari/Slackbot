@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: slackbot
+Version: 0.5.6
+Summary: A simple chat bot for Slack
+Home-page: http://github.com/lins05/slackbot
+Author: Shuai Lin
+Author-email: linshuai2012@gmail.com
+License: MIT
+Platform: Any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: requests (>=2.4.0)
+Requires-Dist: websocket-client (<=0.44.0,>=0.22.0)
+Requires-Dist: slacker (>=0.9.50)
+Requires-Dist: six (>=1.10.0)
+
+UNKNOWN
+
+
