@@ -24,10 +24,10 @@ def mention_func(message):
     message.reply('私にメンションと言ってどうするのだ')  # メンション
 
 
-@respond_to('かっこいい')
+@respond_to('かわいい')
 def cool_func(message):
-    message.reply('ありがとう。スタンプ押しとくね')     # メンション
-    message.react('+1')     # リアクション
+    message.reply('ありがとう！:heart_eyes_cat:')     # メンション
+    message.react('heart_eyes_cat')     # リアクション
 
 
 @respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
@@ -35,11 +35,15 @@ def ping_func(message):
     message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
 
 
-@listen_to('リッスン')
+@listen_to('[fornito|ふぉにと]')
 def listen_func(message):
-    message.send('誰かがリッスンと投稿したようだ')      # ただの投稿
-    message.reply('君だね？')                           # メンション
+    message.send('へっくしゅん！')      # ただの投稿
+    message.reply('呼んだ？')                           # メンション
 
+@listen_to('疲れた')
+def listen_func(message):
+    # message.send('へっくしゅん！')      # ただの投稿
+    message.reply('おつかれさまー')                           # メンション
 
 count = 0
 
