@@ -24,7 +24,7 @@ def mention_func(message):
     message.reply('おはようございます！')  # メンション
 
 
-@respond_to('かわいい')
+@respond_to('かわいい|ｶﾜｲｲ|kawaii')
 def cute_func(message):
     message.reply('ありがとうございます:heart_eyes_cat:')     # メンション
     message.react('heart_eyes_cat')     # リアクション
@@ -35,7 +35,7 @@ def thanks_func(message):
     message.reply('どういたしまして!')     # メンション
 
 
-@respond_to('にゃ')
+@respond_to('^にゃ|みゃ[ぁ|あ|-]*$')
 def mention_nya(message):
     message.reply('にゃにゃん！:kissing_cat:')  # メンション
     message.react('cat')     # リアクション
