@@ -1,6 +1,7 @@
 # coding: utf-8
 import urllib
 import json
+import datetime
 from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 #
 # # @respond_to('string')     bot宛のメッセージ
@@ -38,6 +39,17 @@ def thanks_func(message):
 def mention_nya(message):
     message.reply('にゃにゃん！:kissing_cat:')  # メンション
     message.react('cat')     # リアクション
+
+# カウントダウン
+@respond_to('[Pp]iscine')
+def mention_42(message):
+    pt = datetime.datetime(year=4242, month=4, day=2, hour=12)
+    # nt = datetime.datetime.now()
+    nt = datetime.datetime.today()
+    rt = pt - nt
+    text = 'piscine開始まであと' + '{0}年{1}ヵ月{2]日{3}時間{4}分}'
+    format(rt.year, rt.month, rt.day, rt.hour, rt.minute) + 'です。'
+    message.reply(text)  # メンション
 
 
 @respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
