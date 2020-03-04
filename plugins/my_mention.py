@@ -22,30 +22,34 @@ from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 @respond_to('メンション')
 def mention_func(message):
     message.reply('私にメンションと言ってどうするのだ')  # メンション
-#
-#
-# @respond_to('かっこいい')
-# def cool_func(message):
-#     message.reply('ありがとう。スタンプ押しとくね')     # メンション
-#     message.react('+1')     # リアクション
-#
-#
-# @respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
-# def ping_func(message):
-#     message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
-#
-#
-# @listen_to('リッスン')
-# def listen_func(message):
-#     message.send('誰かがリッスンと投稿したようだ')      # ただの投稿
-#     message.reply('君だね？')                           # メンション
-#
-#
-# count = 0
-#
-#
-# @default_reply()
-# def default_func(message):
-#     global count        # 外で定義した変数の値を変えられるようにする
-#     count += 1
-#     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
+
+@respond_to('かわいい')
+def cool_func(message):
+    message.reply('ありがとう！:heart_eyes_cat:')     # メンション
+    message.react('heart_eyes_cat')     # リアクション
+
+
+@respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
+def ping_func(message):
+    message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
+
+
+@listen_to('[fornito|ふぉにと]')
+def listen_func(message):
+    message.send('へっくしゅん！')      # ただの投稿
+    message.reply('呼んだ？')                           # メンション
+
+@listen_to('疲れた')
+def listen_func(message):
+    # message.send('へっくしゅん！')      # ただの投稿
+    message.reply('おつかれさまー')                           # メンション
+
+count = 0
+
+
+@default_reply()
+def default_func(message):
+    global count        # 外で定義した変数の値を変えられるようにする
+    count += 1
+    message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
+
