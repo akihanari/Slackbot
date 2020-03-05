@@ -1,1 +1,1 @@
-fornito: python run.py
+fnt: python run.py
