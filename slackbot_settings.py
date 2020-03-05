@@ -1,8 +1,8 @@
 # coding: utf-8
-
+import os
 # botアカウントのトークンを指定
 
-API_TOKEN = "xoxb-980833105494-968530411089-97sWDABKeSlXjW8XJqQEr1OI"
+API_TOKEN = os.environ['SLACKBOT_API_TOKEN']
 
 # このbot宛のメッセージで、どの応答にも当てはまらない場合の応答文字列
 DEFAULT_REPLY = "すみません、よくわかりません。"

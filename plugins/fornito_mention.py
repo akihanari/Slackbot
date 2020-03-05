@@ -1,4 +1,5 @@
 # coding: utf-8
+import os
 import urllib
 import json
 import datetime
@@ -20,9 +21,28 @@ from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 # # message.react('icon_emoji')  発言者のメッセージにリアクション(スタンプ)する
 # #                               文字列中に':'はいらない
 @respond_to('おはよ')
-def mention_func(message):
+def mention_morning(message):
     message.reply('おはようございます！')  # メンション
 
+@respond_to('こんにちは')
+def mention_afternoon(message):
+    message.reply('こんにちは！')  # メンション
+
+@respond_to('こんばんは')
+def mention_evening(message):
+    message.reply('こんばんは！')  # メンション
+
+@respond_to('おやすみ')
+def mention_goodnigt(message):
+    message.reply('おやすみなさいませ！')  # メンション
+
+@respond_to('ただいま')
+def mention_home(message):
+    message.reply('おかえりなさいませ！')  # メンション
+
+@respond_to('いってきます')
+def mention_leave(message):
+    message.reply('いってらっしゃいませ！')  # メンション
 
 @respond_to('かわいい|ｶﾜｲｲ|kawaii')
 def cute_func(message):
@@ -41,13 +61,15 @@ def mention_nya(message):
     message.react('cat')     # リアクション
 
 # カウントダウン
-@respond_to('[Pp]iscine')
+@respond_to(os.environ['S_COM'])
 def mention_42(message):
-    pt = datetime.datetime(year=4242, month=4, day=2, hour=12)
-    # nt = datetime.datetime.now()
+    pt = datetime.datetime(year=int(os.environ['S_YEAR']),
+     month=int(os.environ['S_MONTH']), day=int(os.environ['S_DAY']),
+      hour=int(os.environ['S_HOUR']))
+    # nt = datetime.datetime.now()ß
     nt = datetime.datetime.today()
     rt = str(pt - nt)
-    text = 'piscine開始まであと' + rt + 'です。' + ':swimmer:'
+    text = os.environ['S_WORD'] + '開始まであと' + rt + 'です' + ':swimmer:'
     message.reply(text)  # メンション
 
 
