@@ -46,9 +46,8 @@ def mention_42(message):
     pt = datetime.datetime(year=4242, month=4, day=2, hour=12)
     # nt = datetime.datetime.now()
     nt = datetime.datetime.today()
-    rt = pt - nt
-    text = 'piscine開始まであと' + '{0}年{1}ヵ月{2]日{3}時間{4}分}'
-    format(rt.year, rt.month, rt.day, rt.hour, rt.minute) + 'です。'
+    rt = str(pt - nt)
+    text = 'piscine開始まであと' + rt + 'です。' + ':swimmer:'
     message.reply(text)  # メンション
 
 
