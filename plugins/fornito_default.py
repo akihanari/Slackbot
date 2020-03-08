@@ -1,6 +1,7 @@
 # coding: utf-8
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
 import pya3rt
+
 #
 # # @respond_to('string')     bot宛のメッセージ
 # #                           stringは正規表現が可能 「r'string'」
@@ -17,15 +18,18 @@ import pya3rt
 # # message.send('string')    string を送信
 # # message.react('icon_emoji')  発言者のメッセージにリアクション(スタンプ)する
 # #                               文字列中に':'はいらない
-#count = 0
+# count = 0
+#
+#
+# @default_reply()
+# def default_func(message):
+#     global count        # 外で定義した変数の値を変えられるようにする
+#     count += 1
+#     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
 
 
 @default_reply()
 def default_func(message):
-    # global count        # 外で定義した変数の値を変えられるようにする
-    # count += 1
-    # message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
-
     apikey = "TALK_API_KEY"
     client = pya3rt.TalkClient(apikey)
     reply_message = client.talk(message.body['text'])

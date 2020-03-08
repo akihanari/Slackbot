@@ -124,6 +124,7 @@ def train(message):
         message.send(text)
 
 
+
 # ヘルプ
 @respond_to('help!')
 def reply_hello(message):
