@@ -22,6 +22,15 @@ count = 0
 
 @default_reply()
 def default_func(message):
+<<<<<<< HEAD
     global count        # 外で定義した変数の値を変えられるようにする
     count += 1
     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
+=======
+    apikey = "TALK_API_KEY"
+    client = pya3rt.TalkClient(apikey)
+    reply_message = client.talk(message.body['text'])
+    # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
+    # {'status': 0, 'message': 'ok', 'results': [{'perplexity': 1.2802554542585969, 'reply': '私にはよくわからないです'}]}
+    message.reply(reply_message['results'][0]['reply'])
+>>>>>>> 78a80f8... fix_settings
