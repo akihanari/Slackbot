@@ -1,6 +1,7 @@
 certifi==2019.11.28
 chardet==3.0.4
 idna==2.9
+pya3rt==1.1
 requests==2.23.0
 six==1.14.0
 slackbot==0.5.6
