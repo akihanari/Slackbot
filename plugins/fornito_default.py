@@ -30,7 +30,7 @@ import pya3rt
 
 @default_reply()
 def default_func(message):
-    apikey = "TALK_API_KEY"
+    apikey = os.environ['TALK_API_KEY']
     client = pya3rt.TalkClient(apikey)
     reply_message = client.talk(message.body['text'])
     # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
