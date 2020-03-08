@@ -1,6 +1,6 @@
 # coding: utf-8
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
-import py3art
+import pya3rt
 #
 # # @respond_to('string')     bot宛のメッセージ
 # #                           stringは正規表現が可能 「r'string'」
