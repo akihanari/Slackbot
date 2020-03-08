@@ -1,5 +1,6 @@
 # coding: utf-8
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
+import os
 import pya3rt
 
 #
