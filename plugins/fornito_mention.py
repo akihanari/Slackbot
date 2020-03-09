@@ -90,7 +90,7 @@ def weather(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
         # 追加部分
-        pref = search_word  # 都道府県
+        pref = search_word[1]  # 都道府県
         # message.send('地域を以下から指定してください↓')
         # city = message  # 地域
         # ここまで
