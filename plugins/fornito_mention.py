@@ -134,7 +134,7 @@ def train(message):
 @respond_to('qiita!')
 def reply_qiita(message):
     search_word = message.body['text'].split()
-    if len(search_word) = 2:
+    if len(search_word) == 2:
         url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E3'
         title = '+title=' + '%3A' + search_word[1]
         html = urllib.request.urlopen(url + title)
