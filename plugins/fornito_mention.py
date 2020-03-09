@@ -133,18 +133,24 @@ def train(message):
 # Qiita
 @respond_to('qiita!')
 def reply_qiita(message):
-    url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E3'
-    title = '+title=' + '%3A' + 'python'
-    html = urllib.request.urlopen(url + title)
-    jsonfile = json.loads(html.read().decode('utf-8'))
+    if len(search_word) >= 2:
+        url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E3'
+        title = '+title=' + '%3A' + search_word
+        html = urllib.request.urlopen(url + title)
+        jsonfile = json.loads(html.read().decode('utf-8'))
 
-    print('記事を3件表示します')
+        message.send('見つかった記事を3件表示します')
 
-    for json_ in jsonfile:
-        j_title = json_['title']
-        j_url = json_['url']
-        message.send(j_title)
-        message.send(j_url)
+        for json_ in jsonfile:
+            j_title = json_['title']
+            j_url = json_['url']
+            message.send(j_title)
+            message.send(j_url)
+    else:
+        message.send('こんな風に検索してください↓')
+        message.send('qiita! 検索ワード')
+        message.send('例: qiita! python')
+        search_word = message.body['text'].split()
 
 
 # ヘルプ
