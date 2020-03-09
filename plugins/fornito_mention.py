@@ -113,6 +113,7 @@ def weather(message):
     if len(search_word) == 2:
         # 追加部分
         pref = urllib.parse.quote(search_word[1])  # 都道府県
+        print("pref:", pref)
         # message.send('地域を以下から指定してください↓')
         # city = message  # 地域
         # ここまで
@@ -120,6 +121,7 @@ def weather(message):
         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
         # city_id = '130010'
         html = urllib.request.urlopen(url + pref)
+        print("html:", html)
         jsonfile = json.loads(html.read().decode('utf-8'))
         title = jsonfile['title']
         telop = jsonfile['forecasts'][0]['telop']

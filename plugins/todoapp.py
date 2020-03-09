@@ -3,7 +3,7 @@ import logging
 import slack
 import ssl as ssl_lib
 import certifi
-from todoapp import Todo
+from fornito_todo import Todo
 from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 
 # アプリをシンプルにするために、データをメモリ上に保存
