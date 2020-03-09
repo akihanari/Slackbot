@@ -3,6 +3,7 @@ import os
 import urllib
 import json
 import datetime
+import calendar
 from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 #
 # # @respond_to('string')     bot宛のメッセージ
@@ -84,6 +85,23 @@ def ping_func(message):
     message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
 
 
+# カレンダー
+@respond_to('calendar!')
+def reply_qiita(message):
+    search_word = message.body['text'].split()
+    if len(search_word) == 3:
+        yea = search_word[1]
+        mon = search_word[2]
+
+        message.send(yea, '年', mon, '月のカレンダーを表示します')
+        cal = calendar.TextCalendar()
+        cal.prmonth(yea, mon)
+
+    else:
+        message.send('こんな風に指定してください↓')
+        message.send('calendar! 西暦 月')
+        message.send('例: calendar! 2020 3')
+
 # 天気予報
 @respond_to('天気|weather!')
 def weather(message):
@@ -123,8 +141,8 @@ def weather(message):
         text = title + '\n' + '今日の天気は' + telop + telop_icon + 'です！'
         message.send(text)
     else:
-        message.send('都道府県で指定してください(北海道は道北/道東/道南/道央の中から指定)')
-        message.send('weather! 東京')
+        message.send('都道府県で指定してください(北海道は道北/道東/道南/道央の中から指定)↓')
+        message.send('例: weather! 東京')
 
 
 # 電車遅延情報
@@ -173,12 +191,16 @@ def reply_hello(message):
             'fields': [
                 {'title': "コマンド", 'value': "help!", 'short': True},
                 {'title': "説明", 'value': "ヘルプを表示します", 'short': True},
+                {'value': "todo!", 'short': True},
+                {'value': "TODO機能を実行します", 'short': True},
                 {'value': "qiita! 検索ワード", 'short': True},
                 {'value': "Qiitaの記事を検索します", 'short': True},
                 {'value': "weather!", 'short': True},
                 {'value': "天気予報を表示します", 'short': True},
                 {'value': "delay!", 'short': True},
                 {'value': "電車の遅延情報を表示します", 'short': True},
+                {'value': "calendar! 西暦 月", 'short': True},
+                {'value': "カレンダーを表示します", 'short': True},
             ]
         }
     ]
