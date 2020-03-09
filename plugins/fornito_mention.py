@@ -90,10 +90,10 @@ def ping_func(message):
 def reply_qiita(message):
     search_word = message.body['text'].split()
     if len(search_word) == 3:
-        yea = search_word[1]
-        mon = search_word[2]
+        yea = int(search_word[1])
+        mon = int(search_word[2])
 
-        text = yea + '年' + mon + '月のカレンダーを表示します'
+        text = '{0}年{1}月のカレンダーを表示します'.format(yea, mon)
         message.send(text)
         cal = calendar.TextCalendar()
         cal.prmonth(yea, mon)
