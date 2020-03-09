@@ -50,7 +50,6 @@ class Todo:
         )
         return self._get_task_block(text, information)
 
-
     def _get_pin_block(self):
         task_checkmark = self._get_checkmark(self.pin_task_completed)
         text = (

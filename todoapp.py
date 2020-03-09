@@ -3,20 +3,22 @@ import logging
 import slack
 import ssl as ssl_lib
 import certifi
-from fornito_todo import Todo
+from todo import Todo
+from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 
 # アプリをシンプルにするために、データをメモリ上に保存
 # todo_sent = {"channel": {"user_id": todo}}
 todo_sent = {}
-
 # if __name__ == "__main__":
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
+# ここらへん怪しい
 ssl_context = ssl_lib.create_default_context(cafile=certifi.where())
-slack_token = os.environ["SLACK_BOT_TOKEN"]
+slack_token = os.environ['SLACKBOT_API_TOKEN']
 rtm_client = slack.RTMClient(token=slack_token, ssl=ssl_context)
 rtm_client.start()
+
 
 def start_todo(web_client: slack.WebClient, user_id: str, channel: str):
     # 新しいTodoインスタンスを作成
@@ -104,6 +106,7 @@ def update_pin(**payload):
 # ============== Message Events ============= #
 # ユーザーがDMを送ったときに呼ばれるイベント
 # イベントタイプは 'message'
+@respond_to('qiita!')
 @slack.RTMClient.run_on(event="message")
 def message(**payload):
     """
@@ -113,7 +116,7 @@ def message(**payload):
     web_client = payload["web_client"]
     channel_id = data.get("channel")
     user_id = data.get("user")
-    text = data.get("text")
+    # text = data.get("text")
 
-    if text and text.lower() == "todo!":
-        return start_todo(web_client, user_id, channel_id)
+    # if text and text.lower() == "todo!":
+    return start_todo(web_client, user_id, channel_id)

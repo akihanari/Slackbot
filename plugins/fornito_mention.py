@@ -24,25 +24,31 @@ from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 def mention_morning(message):
     message.reply('おはようございます！')  # メンション
 
+
 @respond_to('こんにちは')
 def mention_afternoon(message):
     message.reply('こんにちは！')  # メンション
+
 
 @respond_to('こんばんは')
 def mention_evening(message):
     message.reply('こんばんは！')  # メンション
 
+
 @respond_to('おやすみ')
 def mention_goodnigt(message):
     message.reply('おやすみなさいませ！')  # メンション
+
 
 @respond_to('ただいま')
 def mention_home(message):
     message.reply('おかえりなさいませ！')  # メンション
 
+
 @respond_to('いってきます')
 def mention_leave(message):
     message.reply('いってらっしゃいませ！')  # メンション
+
 
 @respond_to('かわいい|ｶﾜｲｲ|kawaii')
 def cute_func(message):
@@ -64,8 +70,8 @@ def mention_nya(message):
 @respond_to(os.environ['S_COM'])
 def mention_42(message):
     pt = datetime.datetime(year=int(os.environ['S_YEAR']),
-     month=int(os.environ['S_MONTH']), day=int(os.environ['S_DAY']),
-      hour=int(os.environ['S_HOUR']))
+         month=int(os.environ['S_MONTH']), day=int(os.environ['S_DAY']),
+           hour=int(os.environ['S_HOUR']))
     # nt = datetime.datetime.now()ß
     nt = datetime.datetime.today()
     rt = str(pt - nt)
@@ -123,6 +129,22 @@ def train(message):
         text = company + name + 'が遅延してるみたいです...'
         message.send(text)
 
+
+# Qiita
+@respond_to('qiita!')
+def reply_qiita(message):
+    url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E3'
+    title = '+title=' + '%3A' + 'python'
+    html = urllib.request.urlopen(url + title)
+    jsonfile = json.loads(html.read().decode('utf-8'))
+
+    print('記事を3件表示します')
+
+    for json_ in jsonfile:
+        j_title = json_['title']
+        j_url = json_['url']
+        message.send(j_title)
+        message.send(j_url)
 
 
 # ヘルプ
