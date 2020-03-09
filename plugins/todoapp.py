@@ -3,7 +3,7 @@ import logging
 import slack
 import ssl as ssl_lib
 import certifi
-from todo import Todo
+from todoapp import Todo
 from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 
 # アプリをシンプルにするために、データをメモリ上に保存
@@ -106,7 +106,7 @@ def update_pin(**payload):
 # ============== Message Events ============= #
 # ユーザーがDMを送ったときに呼ばれるイベント
 # イベントタイプは 'message'
-@respond_to('qiita!')
+@respond_to('todo!')
 @slack.RTMClient.run_on(event="message")
 def message(**payload):
     """
