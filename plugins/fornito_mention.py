@@ -133,6 +133,7 @@ def train(message):
 # Qiita
 @respond_to('qiita!')
 def reply_qiita(message):
+    search_word = message.body['text'].split()
     if len(search_word) >= 2:
         url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E3'
         title = '+title=' + '%3A' + search_word
@@ -150,7 +151,6 @@ def reply_qiita(message):
         message.send('こんな風に検索してください↓')
         message.send('qiita! 検索ワード')
         message.send('例: qiita! python')
-        search_word = message.body['text'].split()
 
 
 # ヘルプ
