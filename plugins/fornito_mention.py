@@ -93,7 +93,7 @@ def reply_qiita(message):
         yea = search_word[1]
         mon = search_word[2]
 
-        text = yea, '年', mon, '月のカレンダーを表示します'
+        text = yea + '年' + mon + '月のカレンダーを表示します'
         message.send(text)
         cal = calendar.TextCalendar()
         cal.prmonth(yea, mon)
