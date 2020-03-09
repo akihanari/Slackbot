@@ -162,6 +162,8 @@ def reply_hello(message):
             'fields': [
                 {'title': "コマンド", 'value': "help!", 'short': True},
                 {'title': "説明", 'value': "ヘルプを表示します", 'short': True},
+                {'value': "qiita! 検索ワード", 'short': True},
+                {'value': "Qiitaの記事を検索します", 'short': True},
                 {'value': "weather!", 'short': True},
                 {'value': "天気予報を表示します", 'short': True},
                 {'value': "delay!", 'short': True},
