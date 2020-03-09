@@ -95,8 +95,10 @@ def reply_qiita(message):
 
         text = '{0}年{1}月のカレンダーを表示します'.format(yea, mon)
         message.send(text)
-        cal = calendar.TextCalendar()
-        print(cal.prmonth(yea, mon))
+        # cal = calendar.TextCalendar()
+        # print(cal.prmonth(yea, mon))
+        calendar.setfirstweekday(calendar.SUNDAY)
+        print(calendar.month(yea, mon))
 
     else:
         message.send('こんな風に指定してください↓')
@@ -165,7 +167,7 @@ def train(message):
 def reply_qiita(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
-        url = 'https://qiita.com/api/v2/items?page=1&per_page=3&query=stocks%3A%3E5'
+        url = 'https://qiita.com/api/v2/items?page=1&per_page=5&query=stocks%3A%3E3'
         title = '+title' + '%3A' + search_word[1]
         html = urllib.request.urlopen(url + title)
         jsonfile = json.loads(html.read().decode('utf-8'))
