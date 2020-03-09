@@ -98,7 +98,7 @@ def reply_qiita(message):
         # cal = calendar.TextCalendar()
         # print(cal.prmonth(yea, mon))
         calendar.setfirstweekday(calendar.SUNDAY)
-        print(calendar.month(yea, mon))
+        message.send(calendar.month(yea, mon))
 
     else:
         message.send('こんな風に指定してください↓')
