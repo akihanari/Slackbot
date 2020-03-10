@@ -277,6 +277,9 @@ def weather(message):
         if weather_dic[search_word[1]]:
             for key in weather_dic[search_word[1]]:
                 dic_city = weather_dic[search_word[1]]
+                print("dic_city:", dic_city)
+                print("dic_city[key]:", dic_city[key])
+
                 if dic_city[key]:
                     city = dic_city[key]
                 else:
@@ -294,8 +297,9 @@ def weather(message):
         #     exit()
         # else:
         #     pass
-
+        print("city:", city)
         city = urllib.parse.quote(city)  # 都市
+        print("city:", city)
 
         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
         # city_id = '130010'
