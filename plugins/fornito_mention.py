@@ -100,7 +100,7 @@ def reply_calendar(message):
         # cal = calendar.TextCalendar()
         # print(cal.prmonth(yea, mon))
         calendar.setfirstweekday(calendar.SUNDAY)
-        cal = '```' + calendar.month(yea, mon, w=5) + '```'
+        cal = '```' + calendar.month(yea, mon, w=3) + '```'
         message.send(cal)
 
     else:
@@ -262,9 +262,12 @@ def weather(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
         if weather_dic[search_word[1]]:
+            text = ""
+            for key in weather_dic[search_word[1]]:
+                text += key + " "
             message.send('都市を選んで指定してください↓')
             message.send('例: weather! 神奈川 横浜')
-            text = weather_dic[search_word[1]].keys
+            # text = weather_dic[search_word[1]].keys
             message.send(text)
             exit()
         else:
