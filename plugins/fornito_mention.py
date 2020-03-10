@@ -278,10 +278,10 @@ def weather(message):
         # for key in weather_dic[search_word[1]]:
             dic_city = weather_dic[search_word[1]]
             print("dic_city:", dic_city)
-            print("dic_city[key]:", dic_city[key])
+            print("dic_city[search_word[2]]:", dic_city[search_word[2]])
 
-            if dic_city[key]:
-                city = dic_city[key]
+            if dic_city[search_word[2]]:
+                city = dic_city[search_word[2]]
             else:
                 message.send('存在しない都市です。下から選んで指定してください↓')
                 message.send('例: weather! 神奈川 横浜')
