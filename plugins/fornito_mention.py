@@ -272,14 +272,28 @@ def weather(message):
             exit()
         else:
             message.send('入力が正しくありません。都道府県で指定してください')
-    elif len(search_word) == 3:
-        if weather_dic[search_word[2]]:
-            message.send('存在しない都市です。下から選んで指定してください↓')
-            message.send('例: weather! 神奈川 横浜')
-            message.send(weather_dic[search_word[1]])
             exit()
+    elif len(search_word) == 3:
+        if weather_dic[search_word[1]]:
+            for key in weather_dic[search_word[1]]:
+                dic_city = weather_dic[search_word[1]]
+                if dic_city[key]:
+                    city = dic_city[key]
+                else:
+                    message.send('存在しない都市です。下から選んで指定してください↓')
+                    message.send('例: weather! 神奈川 横浜')
+                    message.send(weather_dic[search_word[1]])
+                    exit()
         else:
-            pass
+            message.send('入力が正しくありません。都道府県で指定してください')
+            exit()
+        # if weather_dic[search_word[2]]:
+        #     message.send('存在しない都市です。下から選んで指定してください↓')
+        #     message.send('例: weather! 神奈川 横浜')
+        #     message.send(weather_dic[search_word[1]])
+        #     exit()
+        # else:
+        #     pass
 
         city = urllib.parse.quote(search_word[2])  # 都市
 
