@@ -108,48 +108,48 @@ def reply_calendar(message):
         message.send('例: calendar! 2020 3')
 
 # 天気予報
-@respond_to('天気|weather!')
-def weather(message):
-    search_word = message.body['text'].split()
-    if len(search_word) == 2:
-        # 追加部分
-        pref = urllib.parse.quote(search_word[1])  # 都道府県
-        print("pref:", pref)
-        # message.send('地域を以下から指定してください↓')
-        # city = message  # 地域
-        # ここまで
-
-        url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
-        # city_id = '130010'
-        html = urllib.request.urlopen(url + pref)
-        print("html:", html)
-        jsonfile = json.loads(html.read().decode('utf-8'))
-        title = jsonfile['title']
-        telop = jsonfile['forecasts'][0]['telop']
-        telop_icon = ''
-        if telop.find('雪') > -1:
-            telop_icon = ':snowman:'
-        elif telop.find('雷') > -1:
-            telop_icon = ':thunder_cloud_and_rain:'
-        elif telop.find('晴') > -1:
-            if telop.find('曇') > -1:
-                telop_icon = ':partly_sunny:'
-            elif telop.find('雨') > -1:
-                telop_icon = ':partly_sunny_rain:'
-            else:
-                telop_icon = ':sunny:'
-        elif telop.find('雨') > -1:
-            telop_icon = ':umbrella:'
-        elif telop.find('曇') > -1:
-            telop_icon = ':cloud:'
-        else:
-            telop_icon = ':fire:'
-
-        text = title + '\n' + '今日の天気は' + telop + telop_icon + 'です！'
-        message.send(text)
-    else:
-        message.send('都道府県で指定してください(北海道は道北/道東/道南/道央の中から指定)↓')
-        message.send('例: weather! 東京')
+# @respond_to('天気|weather!')
+# def weather(message):
+#     search_word = message.body['text'].split()
+#     if len(search_word) == 2:
+#         # 追加部分
+#         pref = urllib.parse.quote(search_word[1])  # 都道府県
+#         print("pref:", pref)
+#         # message.send('地域を以下から指定してください↓')
+#         # city = message  # 地域
+#         # ここまで
+#
+#         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
+#         # city_id = '130010'
+#         html = urllib.request.urlopen(url + pref)
+#         print("html:", html)
+#         jsonfile = json.loads(html.read().decode('utf-8'))
+#         title = jsonfile['title']
+#         telop = jsonfile['forecasts'][0]['telop']
+#         telop_icon = ''
+#         if telop.find('雪') > -1:
+#             telop_icon = ':snowman:'
+#         elif telop.find('雷') > -1:
+#             telop_icon = ':thunder_cloud_and_rain:'
+#         elif telop.find('晴') > -1:
+#             if telop.find('曇') > -1:
+#                 telop_icon = ':partly_sunny:'
+#             elif telop.find('雨') > -1:
+#                 telop_icon = ':partly_sunny_rain:'
+#             else:
+#                 telop_icon = ':sunny:'
+#         elif telop.find('雨') > -1:
+#             telop_icon = ':umbrella:'
+#         elif telop.find('曇') > -1:
+#             telop_icon = ':cloud:'
+#         else:
+#             telop_icon = ':fire:'
+#
+#         text = title + '\n' + '今日の天気は' + telop + telop_icon + 'です！'
+#         message.send(text)
+#     else:
+#         message.send('都道府県で指定してください(北海道は道北/道東/道南/道央の中から指定)↓')
+#         message.send('例: weather! 東京')
 
 
 # 電車遅延情報
