@@ -295,7 +295,7 @@ def weather(message):
         # else:
         #     pass
 
-        city = urllib.parse.quote(search_word[2])  # 都市
+        city = urllib.parse.quote(city)  # 都市
 
         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
         # city_id = '130010'
