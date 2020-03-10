@@ -261,7 +261,7 @@ weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '
 def weather(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
-        if weather_dic[search_word[1]]:
+        if weather_dic[search_word[1]] is not None:
             text = ""
             for key in weather_dic[search_word[1]]:
                 text += key + " "
@@ -275,13 +275,13 @@ def weather(message):
             message.send('例: weather! 東京')
             exit()
     elif len(search_word) == 3:
-        if weather_dic[search_word[1]]:
+        if weather_dic[search_word[1]] is not None:
         # for key in weather_dic[search_word[1]]:
             dic_city = weather_dic[search_word[1]]
             print("dic_city:", dic_city)
             print("dic_city[search_word[2]]:", dic_city[search_word[2]])
 
-            if dic_city[search_word[2]]:
+            if dic_city[search_word[2]] is not None:
                 city = dic_city[search_word[2]]
             else:
                 message.send('存在しない都市です。下から選んで指定してください↓')
