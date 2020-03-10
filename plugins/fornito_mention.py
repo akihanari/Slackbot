@@ -72,8 +72,9 @@ def mention_nya(message):
 @respond_to(os.environ['S_COM'])
 def mention_42(message):
     pt = datetime.datetime(year=int(os.environ['S_YEAR']),
-         month=int(os.environ['S_MONTH']), day=int(os.environ['S_DAY']),
-           hour=int(os.environ['S_HOUR']))
+                           month=int(os.environ['S_MONTH']),
+                           day=int(os.environ['S_DAY']),
+                           hour=int(os.environ['S_HOUR']))
     # nt = datetime.datetime.now()ß
     nt = datetime.datetime.today()
     rt = str(pt - nt)
@@ -88,7 +89,7 @@ def ping_func(message):
 
 # カレンダー
 @respond_to('calendar!')
-def reply_qiita(message):
+def reply_calendar(message):
     search_word = message.body['text'].split()
     if len(search_word) == 3:
         yea = int(search_word[1])
