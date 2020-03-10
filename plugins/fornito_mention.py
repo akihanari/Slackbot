@@ -100,7 +100,8 @@ def reply_calendar(message):
         # cal = calendar.TextCalendar()
         # print(cal.prmonth(yea, mon))
         calendar.setfirstweekday(calendar.SUNDAY)
-        message.send(calendar.month(yea, mon, w=5))
+        cal = '```' + calendar.month(yea, mon, w=5) + '```'
+        message.send(cal)
 
     else:
         message.send('こんな風に指定してください↓')
@@ -188,6 +189,7 @@ def reply_qiita(message):
         message.send('qiita! 検索ワード')
         message.send('例: qiita! python')
 
+# 天気予報
 weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '012020',
                '網走': '013010', '北見': '013020', '紋別': '013030',
                        '根室': '014010', '釧路': '014020', '帯広': '014030',
@@ -255,16 +257,15 @@ weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '
                       '与那国島': '474020'}
                }
 
-# 天気予報
 @respond_to('天気|weather!')
 def weather(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
-        # 追加部分
         if weather_dic[search_word[1]]:
             message.send('都市を選んで指定してください↓')
             message.send('例: weather! 神奈川 横浜')
-            message.send(weather_dic[search_word[1]])
+            text = weather_dic[search_word[1]].keys
+            message.send(text)
             exit()
         else:
             message.send('入力が正しくありません。都道府県で指定してください')
