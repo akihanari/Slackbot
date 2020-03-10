@@ -275,18 +275,18 @@ def weather(message):
             exit()
     elif len(search_word) == 3:
         if weather_dic[search_word[1]]:
-            for key in weather_dic[search_word[1]]:
-                dic_city = weather_dic[search_word[1]]
-                print("dic_city:", dic_city)
-                print("dic_city[key]:", dic_city[key])
+        # for key in weather_dic[search_word[1]]:
+            dic_city = weather_dic[search_word[1]]
+            print("dic_city:", dic_city)
+            print("dic_city[key]:", dic_city[key])
 
-                if dic_city[key]:
-                    city = dic_city[key]
-                else:
-                    message.send('存在しない都市です。下から選んで指定してください↓')
-                    message.send('例: weather! 神奈川 横浜')
-                    message.send(weather_dic[search_word[1]])
-                    exit()
+            if dic_city[key]:
+                city = dic_city[key]
+            else:
+                message.send('存在しない都市です。下から選んで指定してください↓')
+                message.send('例: weather! 神奈川 横浜')
+                message.send(weather_dic[search_word[1]])
+                exit()
         else:
             message.send('入力が正しくありません。都道府県で指定してください')
             exit()
