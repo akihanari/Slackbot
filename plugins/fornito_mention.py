@@ -167,9 +167,9 @@ def reply_calendar(message):
 #         text = company + name + 'が遅延してるみたいです...'
 #         message.send(text)
 
-# 電車遅延情報
 @respond_to('delay!')
 def train(message):
+    '''電車遅延情報を表示'''
     search_word = message.body['text'].split()
     if len(search_word) == 2:
         url = 'https://tetsudo.rti-giken.jp/free/delay.json'
@@ -180,7 +180,7 @@ def train(message):
             name = json_['name']
             company = json_['company']
             if search_word[1] == name:
-                text = company + name + 'が遅延してるみたいです...'
+                text = company + name + 'は遅延してるみたいです...'
                 message.send(text)
                 break
         else:
