@@ -183,10 +183,11 @@ def train(message):
                 text = company + name + 'が遅延してるみたいです...'
                 message.send(text)
             else:
-                message.send('遅延情報はないみたいです!')
+                pass
+        message.send('遅延情報はないみたいです!')
     else:
         message.send('路線を指定してください↓')
-        message.send('例: weather! 山手線')
+        message.send('例: delay! 山手線')
 
 
 # Qiita
