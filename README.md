@@ -102,10 +102,37 @@ mail to: xxxx@mail.com
 # リポジトリ名
 このソフトはどんなもので、何ができるのかを書く
 合わせて、簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示
+Slackbotです。主に以下の機能があります。
++ Qiita検索
++ 天気予報
++ 電車遅延情報
++ カレンダー表示
++ 雑談
+
 
 # Dependency
 使用言語とバージョン、必要なライブラリとそのバージョンを書く
 Pythonならrequirements.txtを用意するのも良い
+Python
++ Python-3.7.0
+ライブラリ
+ + certifi==2019.11.28
+ + chardet==3.0.4
+ + idna==2.9
+ + pya3rt==1.1
+ + requests==2.12.4
+ + six==1.14.0
+ + slackbot==0.5.6 *
+ + slackclient==2.5.0
+ + slacker==0.14.0 *
+ + urllib3==1.25.8
+ + websocket-client==0.44.0
+
+# 使用API
++ SlackAPI
++ [Livedoor お天気Webサービス](http://weather.livedoor.com/weather_hacks/webservice)
++ [鉄道遅延情報のjson](https://rti-giken.jp/fhc/api/train_tetsudo/)
++ [recruit-tech TalkAPI](https://a3rt.recruit-tech.co.jp/product/talkAPI/)
 
 # Setup
 セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
@@ -118,8 +145,19 @@ This software is released under the MIT License, see LICENSE.
 
 # Authors
 作者を明示する。特に、他者が作成したコードを利用する場合は、そのコードのライセンスに従った上で、リポジトリのそれぞれのコードのオリジナルの作者が誰か分かるように明示する（私はそれが良いと思い自主的にしています）。
+akihanari
 
 # References
 参考にした情報源（サイト・論文）などの情報、リンク
+
+Slackbotの作成
++ [ビットログ](https://blog.bitmeister.jp/?p=3911)
+
+APIについて
++ [Slackbot備忘録(1)](https://qiita.com/usomaru/items/529b6f40902ee1eda125)
++ [リクルートのTalk APIを用いてslack bot(python製)に会話機能を追加する](https://qiita.com/takahirono7/items/197375db24a03cbcd591)
+
+Herokuにデプロイ
++ [pythonで作ったSlackBotを常駐化するまでの備忘録](https://qiita.com/usomaru/items/6eed064690cdb7988e54)
 
 -->
