@@ -1,18 +1,14 @@
 # coding: utf-8
-import os
+# import os
 import urllib
 import urllib.parse
 import json
-import datetime
+# import datetime
 import calendar
 from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 #
 # # @respond_to('string')     bot宛のメッセージ
 # #                           stringは正規表現が可能 「r'string'」
-# # @listen_to('string')      チャンネル内のbot宛以外の投稿
-# #                           @botname: では反応しないことに注意
-# #                           他の人へのメンションでは反応する
-# #                           正規表現可能
 # # @default_reply()          DEFAULT_REPLY と同じ働き
 # #                           正規表現を指定すると、他のデコーダにヒットせず、
 # #                           正規表現にマッチするときに反応
@@ -24,67 +20,72 @@ from slackbot.bot import respond_to     # @botname: で反応するデコーダ
 # #                               文字列中に':'はいらない
 @respond_to('おはよ')
 def mention_morning(message):
-    message.reply('おはようございます！')  # メンション
+    message.reply('おはようございます！')
 
 
 @respond_to('こんにちは')
 def mention_afternoon(message):
-    message.reply('こんにちは！')  # メンション
+    message.reply('こんにちは！')
 
 
 @respond_to('こんばんは')
 def mention_evening(message):
-    message.reply('こんばんは！')  # メンション
+    message.reply('こんばんは！')
 
 
 @respond_to('おやすみ')
 def mention_goodnigt(message):
-    message.reply('おやすみなさいませ！')  # メンション
+    message.reply('おやすみなさいませ！')
 
 
 @respond_to('ただいま')
 def mention_home(message):
-    message.reply('おかえりなさいませ！')  # メンション
+    message.reply('おかえりなさいませ！')
 
 
 @respond_to('いってきます')
 def mention_leave(message):
-    message.reply('いってらっしゃいませ！')  # メンション
+    message.reply('いってらっしゃいませ！')
 
 
 @respond_to('かわいい|ｶﾜｲｲ|kawaii')
 def cute_func(message):
-    message.reply('ありがとうございます:heart_eyes_cat:')     # メンション
-    message.react('heart_eyes_cat')     # リアクション
+    message.reply('ありがとうございます:heart_eyes_cat:')
+    message.react('heart_eyes_cat')
 
 
 @respond_to('ありがとう')
 def thanks_func(message):
-    message.reply('どういたしまして!')     # メンション
+    message.reply('どういたしまして!')
 
 
 @respond_to('^にゃ|みゃ[ぁ|あ|-]*$')
 def mention_nya(message):
-    message.reply('にゃにゃん！:kissing_cat:')  # メンション
-    message.react('cat')     # リアクション
-
-# カウントダウン
-@respond_to(os.environ['S_COM'])
-def mention_42(message):
-    pt = datetime.datetime(year=int(os.environ['S_YEAR']),
-                           month=int(os.environ['S_MONTH']),
-                           day=int(os.environ['S_DAY']),
-                           hour=int(os.environ['S_HOUR']))
-    # nt = datetime.datetime.now()ß
-    nt = datetime.datetime.today()
-    rt = str(pt - nt)
-    text = os.environ['S_WORD'] + '開始まであと' + rt + 'です' + ':swimmer:'
-    message.reply(text)  # メンション
+    message.reply('にゃにゃん！:kissing_cat:')
+    message.react('cat')
 
 
-@respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
-def ping_func(message):
-    message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
+@respond_to('だれ|誰|名前は[?|何]')
+def mention_who(message):
+    message.reply('私の名前はfornito。あなたのお助けbotです！\nお気軽に話しかけてくださいね！')
+
+# # カウントダウン
+# @respond_to(os.environ['S_COM'])
+# def mention_42(message):
+#     pt = datetime.datetime(year=int(os.environ['S_YEAR']),
+#                            month=int(os.environ['S_MONTH']),
+#                            day=int(os.environ['S_DAY']),
+#                            hour=int(os.environ['S_HOUR']))
+#     # nt = datetime.datetime.now()ß
+#     nt = datetime.datetime.today()
+#     rt = str(pt - nt)
+#     text = os.environ['S_WORD'] + '開始まであと' + rt + 'です' + ':swimmer:'
+#     message.reply(text)  # メンション
+
+
+# @respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
+# def ping_func(message):
+#     message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
 
 
 # カレンダー
@@ -153,18 +154,39 @@ def reply_calendar(message):
 #         message.send('例: weather! 東京')
 
 
-# 電車遅延情報
-@respond_to('電車|delay!')
-def train(message):
-    url = 'https://tetsudo.rti-giken.jp/free/delay.json'
-    html = urllib.request.urlopen(url)
-    jsonfile = json.loads(html.read().decode('utf-8'))
+# # 電車遅延情報
+# @respond_to('delay!')
+# def train(message):
+#     url = 'https://tetsudo.rti-giken.jp/free/delay.json'
+#     html = urllib.request.urlopen(url)
+#     jsonfile = json.loads(html.read().decode('utf-8'))
+#
+#     for json_ in jsonfile:
+#         name = json_['name']
+#         company = json_['company']
+#         text = company + name + 'が遅延してるみたいです...'
+#         message.send(text)
 
-    for json_ in jsonfile:
-        name = json_['name']
-        company = json_['company']
-        text = company + name + 'が遅延してるみたいです...'
-        message.send(text)
+# 電車遅延情報
+@respond_to('delay!')
+def train(message):
+    search_word = message.body['text'].split()
+    if len(search_word) == 2:
+        url = 'https://tetsudo.rti-giken.jp/free/delay.json'
+        html = urllib.request.urlopen(url)
+        jsonfile = json.loads(html.read().decode('utf-8'))
+
+        for json_ in jsonfile:
+            name = json_['name']
+            company = json_['company']
+            if search_word[1] == name:
+                text = company + name + 'が遅延してるみたいです...'
+                message.send(text)
+            else:
+                message.send('遅延情報はないみたいです!')
+    else:
+        message.send('路線を指定してください↓')
+        message.send('例: weather! 山手線')
 
 
 # Qiita
@@ -189,9 +211,10 @@ def reply_qiita(message):
         message.send('qiita! 検索ワード')
         message.send('例: qiita! python')
 
+
 # 天気予報
 weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '012020',
-               '網走': '013010', '北見': '013020', '紋別': '013030',
+                       '網走': '013010', '北見': '013020', '紋別': '013030',
                        '根室': '014010', '釧路': '014020', '帯広': '014030',
                        '室蘭': '015010', '浦河': '015020', '札幌': '016010',
                        '岩見沢': '016020', '倶知安': '016030',
@@ -257,7 +280,8 @@ weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '
                       '与那国島': '474020'}
                }
 
-@respond_to('天気|weather!')
+
+@respond_to('weather!')
 def weather(message):
     search_word = message.body['text'].split()
     if len(search_word) == 2:
@@ -276,7 +300,7 @@ def weather(message):
             exit()
     elif len(search_word) == 3:
         if weather_dic[search_word[1]] is not None:
-        # for key in weather_dic[search_word[1]]:
+            # for key in weather_dic[search_word[1]]:
             dic_city = weather_dic[search_word[1]]
             print("dic_city:", dic_city)
             print("dic_city[search_word[2]]:", dic_city[search_word[2]])
@@ -291,21 +315,14 @@ def weather(message):
         else:
             message.send('入力が正しくありません。都道府県で指定してください')
             exit()
-        # if weather_dic[search_word[2]]:
-        #     message.send('存在しない都市です。下から選んで指定してください↓')
-        #     message.send('例: weather! 神奈川 横浜')
-        #     message.send(weather_dic[search_word[1]])
-        #     exit()
-        # else:
-        #     pass
-        print("city:", city)
-        city = urllib.parse.quote(city)  # 都市
-        print("city:", city)
+
+        # print("city:", city)
+        city = urllib.parse.quote(city)
+        # print("city:", city)
 
         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
-        # city_id = '130010'
         html = urllib.request.urlopen(url + city)
-        print('html:', html)
+        # print('html:', html)
         jsonfile = json.loads(html.read().decode('utf-8'))
         title = jsonfile['title']
         telop = jsonfile['forecasts'][0]['telop']
@@ -343,8 +360,8 @@ def reply_hello(message):
             'fields': [
                 {'title': "コマンド", 'value': "help!", 'short': True},
                 {'title': "説明", 'value': "ヘルプを表示します", 'short': True},
-                {'value': "todo!", 'short': True},
-                {'value': "TODO機能を実行します", 'short': True},
+                # {'value': "todo!", 'short': True},
+                # {'value': "TODO機能を実行します", 'short': True},
                 {'value': "qiita! 検索ワード", 'short': True},
                 {'value': "Qiitaの記事を検索します", 'short': True},
                 {'value': "weather!", 'short': True},
