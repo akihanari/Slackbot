@@ -182,9 +182,9 @@ def train(message):
             if search_word[1] == name:
                 text = company + name + 'が遅延してるみたいです...'
                 message.send(text)
-            else:
-                pass
-        message.send('遅延情報はないみたいです!')
+                break
+        else:
+            message.send('遅延情報はないみたいです!')
     else:
         message.send('路線を指定してください↓')
         message.send('例: delay! 山手線')
@@ -367,7 +367,7 @@ def reply_hello(message):
                 {'value': "Qiitaの記事を検索します", 'short': True},
                 {'value': "weather!", 'short': True},
                 {'value': "天気予報を表示します", 'short': True},
-                {'value': "delay!", 'short': True},
+                {'value': "delay! 路線", 'short': True},
                 {'value': "電車の遅延情報を表示します", 'short': True},
                 {'value': "calendar! 西暦 月", 'short': True},
                 {'value': "カレンダーを表示します", 'short': True},
