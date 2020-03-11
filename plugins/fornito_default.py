@@ -34,6 +34,6 @@ def default_func(message):
     apikey = os.environ['TALK_API_KEY']
     client = pya3rt.TalkClient(apikey)
     reply_message = client.talk(message.body['text'])
-#     # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
-#     # {'status': 0, 'message': 'ok', 'results': [{'perplexity': 1.2802554542585969, 'reply': '私にはよくわからないです'}]}
+    # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
+    # {'status': 0, 'message': 'ok', 'results': [{'perplexity': 1.2802554542585969, 'reply': '私にはよくわからないです'}]}
     message.reply(reply_message['results'][0]['reply'])
