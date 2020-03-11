@@ -30,17 +30,17 @@
 ## 必要要件
 
 - python-3.7.0
-- Slack
+- Slackのワークスペース
 - Heroku
 
 ## 使い方
 
 ### ローカル環境で動かす場合（PC起動時のみ動作）
-1. リポジトリをクローン
-2. [こちらのURL]()にサインインして、カスタムインテグレーションを追加
-3. Slack APIを取得
-4. Talk APIを取得
-5. PCに環境変数を設定()
+1. リポジトリをクローンする。
+2. [こちらのURL](https://my.slack.com/services/new/bot)にサインインして、カスタムインテグレーションを追加する。
+3. Slack APIを取得する。
+4. Talk APIを取得する。
+5. PCに環境変数を設定する(下記参照)
 ```
 $export SLACKBOT_API_TOKEN='SlackAPIキー'
 $export TALK_API_KEY='TalkAPIキー'
@@ -48,10 +48,10 @@ $export TALK_API_KEY='TalkAPIキー'
 6. ```$python run.py```
 
 ### Herokuで常時稼働させる場合
-1. リポジトリをフォーク
-2. [こちらのURL]()にサインインして、カスタムインテグレーションを追加
-3. Slack APIを取得
-4. Talk APIを取得
+1. リポジトリをフォークする。
+2. [こちらのURL](https://my.slack.com/services/new/bot)にサインインして、カスタムインテグレーションを追加する。
+3. Slack API Tokenを取得
+4. Talk API キーを取得
 5. Herokuでアプリを作成
 6. Herokuに環境変数を設定
 | key | value |
@@ -130,12 +130,15 @@ Python
 
 # 使用API
 + SlackAPI
+→Setup参照
 + [Livedoor お天気Webサービス](http://weather.livedoor.com/weather_hacks/webservice)
 + [鉄道遅延情報のjson](https://rti-giken.jp/fhc/api/train_tetsudo/)
 + [recruit-tech TalkAPI](https://a3rt.recruit-tech.co.jp/product/talkAPI/)
+→メールアドレスを登録することでAPIキーを取得できる
 
 # Setup
 セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
+
 
 # Usage
 使い方。なるべく具体的に書く。サンプルも書く
@@ -160,4 +163,6 @@ APIについて
 Herokuにデプロイ
 + [pythonで作ったSlackBotを常駐化するまでの備忘録](https://qiita.com/usomaru/items/6eed064690cdb7988e54)
 
+# URL
+[GitHub](https://github.com/akihanari/Slackbot)
 -->
