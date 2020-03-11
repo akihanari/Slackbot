@@ -1,7 +1,7 @@
-# # coding: utf-8
-# from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
-# import os
-# import pya3rt
+# coding: utf-8
+from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
+import os
+import pya3rt
 #
 # #
 # # # @respond_to('string')     bot宛のメッセージ
@@ -29,11 +29,11 @@
 # #     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
 #
 #
-# @default_reply()
-# def default_func(message):
-#     apikey = os.environ['TALK_API_KEY']
-#     client = pya3rt.TalkClient(apikey)
-#     reply_message = client.talk(message.body['text'])
+@default_reply()
+def default_func(message):
+    apikey = os.environ['TALK_API_KEY']
+    client = pya3rt.TalkClient(apikey)
+    reply_message = client.talk(message.body['text'])
 #     # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
 #     # {'status': 0, 'message': 'ok', 'results': [{'perplexity': 1.2802554542585969, 'reply': '私にはよくわからないです'}]}
 #     message.reply(reply_message['results'][0]['reply'])
