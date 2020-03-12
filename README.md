@@ -1,14 +1,15 @@
 <!--
 最初にアイキャッチ画像などを表示
 
-# Slackbot(for-ni-to)　リポジトリ名
+# Slackbot(for-ni-to)
 
-このソフトはどんなもので、何ができるのかを書く（概要）
-合わせて、簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示
+*このソフトはどんなもので、何ができるのかを書く（概要）
+合わせて、簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示*
 
-## 簡単な説明
+あなたの日常を癒してくれる、メイド型Slackbotです。
 
-Slackbotです。主に以下の機能があります。
+## 主な機能
+
 + Qiita検索
 + 天気予報
 + 電車遅延情報
@@ -17,49 +18,58 @@ Slackbotです。主に以下の機能があります。
 
 ***デモ***
 
+*動作をGIFアニメにして貼る<br>*
 ![デモ](https://image-url.gif)
 
-## 機能
+## コマンド
 
 | コマンド | 説明 | 例 |
-| :-: | :-: | :-: |
+| ::- | ::- | ::- |
 | help! | ヘルプを表示します | help! |
 | qiita! 検索ワード | Qiitaの記事を検索(5件のみ表示)します | qiita! Python |
 | weather! 都道府県 都市 | 天気予報を表示します | weather! 神奈川 横浜 |
 | delay! 路線 | 電車の遅延情報を表示します | delay! 山手線 |
 | calendar! 年 月 | カレンダーを表示します | calendar! 2020 3 |
 
++ weather! など単体でコマンドを実行した場合は補助機能があります
 
-## 必要要件
-使用言語とバージョン、必要なライブラリとそのバージョンを書く
-Pythonならrequirements.txtを用意するのも良い
+*ここにスクリーンショット*
+
+
+## 動作環境
+
+*使用言語とバージョン、必要なライブラリとそのバージョンを書く
+Pythonならrequirements.txtを用意するのも良い*
 
 - python-3.7.0
 - Slackのワークスペース
 - Heroku
 
-Python
-+ Python-3.7.0
-ライブラリ
- + certifi==2019.11.28
- + chardet==3.0.4
- + idna==2.9
- + pya3rt==1.1
- + requests==2.12.4
- + six==1.14.0
- + slackbot==0.5.6 *
- + slackclient==2.5.0
- + slacker==0.14.0 *
- + urllib3==1.25.8
- + websocket-client==0.44.0
 
- # 使用API
++ Python-3.7.0
+  + ライブラリ
+    + certifi==2019.11.28
+    + chardet==3.0.4
+    + idna==2.9
+    + pya3rt==1.1
+    + requests==2.12.4
+    + six==1.14.0
+    + slackbot==0.5.6 *
+    + slackclient==2.5.0
+    + slacker==0.14.0 *
+    + urllib3==1.25.8
+    + websocket-client==0.44.0
+
+ ## 使用API
+
  + SlackAPI
  →Setup参照
  + [Livedoor お天気Webサービス](http://weather.livedoor.com/weather_hacks/webservice)
  + [鉄道遅延情報のjson](https://rti-giken.jp/fhc/api/train_tetsudo/)
  + [recruit-tech TalkAPI](https://a3rt.recruit-tech.co.jp/product/talkAPI/)
  →メールアドレスを登録することでAPIキーを取得できる
+
+
 
  # Setup
  セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
@@ -146,5 +156,4 @@ Herokuにデプロイ
 
 # URL
 [GitHub](https://github.com/akihanari/Slackbot)
-
 -->
