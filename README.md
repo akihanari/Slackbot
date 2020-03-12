@@ -1,5 +1,5 @@
 <!--
-最初にアイキャッチ画像などを表示
+*最初にアイキャッチ画像などを表示*
 
 # Slackbot(for-ni-to)
 
@@ -91,7 +91,7 @@ $export TALK_API_KEY='TalkAPIキー'
 6. ```$python run.py```
 
 ### Herokuで常時稼働させる場合
-1. リポジトリをフォークする。
+1. このリポジトリをフォークする。
 2. [こちらのURL](https://my.slack.com/services/new/bot)にサインインして、カスタムインテグレーションを追加する。
 3. Slack API Tokenを取得
 4. Talk API キーを取得
@@ -130,11 +130,11 @@ $ cd Slackbot
 その他その他その他その他
 
 ## 作者
-作者を明示する。特に、他者が作成したコードを利用する場合は、そのコードのライセンスに従った上で、リポジトリのそれぞれのコードのオリジナルの作者が誰か分かるように明示する（私はそれが良いと思い自主的にしています）。
+*作者を明示する。特に、他者が作成したコードを利用する場合は、そのコードのライセンスに従った上で、リポジトリのそれぞれのコードのオリジナルの作者が誰か分かるように明示する（私はそれが良いと思い自主的にしています）。*
 akihanari
 
-[@TanakanoAnchan](https://twitter.com/TanakanoAnchan)
-mail to: xxxx@mail.com
+[@akihanari](https://twitter.com/akihanari)
+mail to: akihanari@mail.com
 
 ## ライセンス
 This software is released under the MIT License, see LICENSE.
@@ -143,18 +143,19 @@ This software is released under the MIT License, see LICENSE.
 ※アイコン画像はSlackのアイコン画像としてのみお使いください。
 
 # References
-参考にした情報源（サイト・論文）などの情報、リンク
 
-Slackbotの作成
+*参考にした情報源（サイト・論文）などの情報、リンク*
+
+Slackbot:
 + [ビットログ](https://blog.bitmeister.jp/?p=3911)
 
-APIについて
+API:
 + [Slackbot備忘録(1)](https://qiita.com/usomaru/items/529b6f40902ee1eda125)
 + [リクルートのTalk APIを用いてslack bot(python製)に会話機能を追加する](https://qiita.com/takahirono7/items/197375db24a03cbcd591)
 
-Herokuにデプロイ
+Heroku:
 + [pythonで作ったSlackBotを常駐化するまでの備忘録](https://qiita.com/usomaru/items/6eed064690cdb7988e54)
 
-# URL
+## URL
 [GitHub](https://github.com/akihanari/Slackbot)
 -->
