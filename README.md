@@ -31,7 +31,7 @@
 | delay! 路線 | 電車の遅延情報を表示します | delay! 山手線 |
 | calendar! 年 月 | カレンダーを表示します | calendar! 2020 3 |
 
-+ weather! など単体でコマンドを実行した場合は補助機能があります
++ ```weather!``` など単体でコマンドを実行した場合は補助機能があります
 
 *ここにスクリーンショット*
 
@@ -82,6 +82,7 @@ Pythonならrequirements.txtを用意するのも良い*
 2. [こちらのURL](https://my.slack.com/services/new/bot)にサインインして、カスタムインテグレーションを追加する。
 3. Slack APIを取得する。
 4. Talk APIを取得する。
+![talkAPI](https://github.com/akihanari/Slackbot/blob/images/talkapi.png)
 5. PCに環境変数を設定する(下記参照)
 ```
 $export SLACKBOT_API_TOKEN='SlackAPIキー'
@@ -97,7 +98,7 @@ $export TALK_API_KEY='TalkAPIキー'
 5. Herokuでアプリを作成
 6. Herokuに環境変数を設定
 | key | value |
-| :-: | :-: |
+| ::- | ::- |
 | SLACKBOT_API_TOKEN | SlackAPIキー |
 | TALK_API_KEY | TalkAPIキー |
 7. Deploy
