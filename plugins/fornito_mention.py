@@ -1,23 +1,12 @@
 # coding: utf-8
-import os
+# import os
 import urllib
 import urllib.parse
 import json
-# import datetime
 import calendar
-from slackbot.bot import respond_to     # @botname: で反応するデコーダ
-#
-# # @respond_to('string')     bot宛のメッセージ
-# #                           stringは正規表現が可能 「r'string'」
-# # @default_reply()          DEFAULT_REPLY と同じ働き
-# #                           正規表現を指定すると、他のデコーダにヒットせず、
-# #                           正規表現にマッチするときに反応
-# #                           ・・・なのだが、正規表現を指定するとエラーになる？
-#
-# # message.reply('string')   @発言者名: string でメッセージを送信
-# # message.send('string')    string を送信
-# # message.react('icon_emoji')  発言者のメッセージにリアクション(スタンプ)する
-# #                               文字列中に':'はいらない
+from slackbot.bot import respond_to
+
+
 @respond_to('おはよ')
 def mention_morning(message):
     message.reply('おはようございます！')
@@ -69,108 +58,31 @@ def mention_nya(message):
 def mention_who(message):
     message.reply('私の名前はfornito。あなたのお助けbotです！\nお気軽に話しかけてくださいね！')
 
-# # カウントダウン
-# @respond_to(os.environ['S_COM'])
-# def mention_42(message):
-#     pt = datetime.datetime(year=int(os.environ['S_YEAR']),
-#                            month=int(os.environ['S_MONTH']),
-#                            day=int(os.environ['S_DAY']),
-#                            hour=int(os.environ['S_HOUR']))
-#     # nt = datetime.datetime.now()ß
-#     nt = datetime.datetime.today()
-#     rt = str(pt - nt)
-#     text = os.environ['S_WORD'] + '開始まであと' + rt + 'です' + ':swimmer:'
-#     message.reply(text)  # メンション
 
-
-# @respond_to(r'^ping\s+\d+\.\d+\.\d+\.\d+\s*$')
-# def ping_func(message):
-#     message.reply('それはpingのコマンドですね。実行できませんが')   # メンション
-
-
-# カレンダー
 @respond_to('calendar!')
 def reply_calendar(message):
+    """calendar"""
     search_word = message.body['text'].split()
+
     if len(search_word) == 3:
         yea = int(search_word[1])
         mon = int(search_word[2])
-
         text = '{0}年{1}月のカレンダーを表示します'.format(yea, mon)
         message.send(text)
-        # cal = calendar.TextCalendar()
-        # print(cal.prmonth(yea, mon))
         calendar.setfirstweekday(calendar.SUNDAY)
         cal = '```' + calendar.month(yea, mon, w=3) + '```'
         message.send(cal)
-
     else:
         message.send('こんな風に指定してください↓')
         message.send('calendar! 西暦 月')
         message.send('例: calendar! 2020 3')
 
-# 天気予報
-# @respond_to('天気|weather!')
-# def weather(message):
-#     search_word = message.body['text'].split()
-#     if len(search_word) == 2:
-#         # 追加部分
-#         pref = urllib.parse.quote(search_word[1])  # 都道府県
-#         print("pref:", pref)
-#         # message.send('地域を以下から指定してください↓')
-#         # city = message  # 地域
-#         # ここまで
-#
-#         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
-#         # city_id = '130010'
-#         html = urllib.request.urlopen(url + pref)
-#         print("html:", html)
-#         jsonfile = json.loads(html.read().decode('utf-8'))
-#         title = jsonfile['title']
-#         telop = jsonfile['forecasts'][0]['telop']
-#         telop_icon = ''
-#         if telop.find('雪') > -1:
-#             telop_icon = ':snowman:'
-#         elif telop.find('雷') > -1:
-#             telop_icon = ':thunder_cloud_and_rain:'
-#         elif telop.find('晴') > -1:
-#             if telop.find('曇') > -1:
-#                 telop_icon = ':partly_sunny:'
-#             elif telop.find('雨') > -1:
-#                 telop_icon = ':partly_sunny_rain:'
-#             else:
-#                 telop_icon = ':sunny:'
-#         elif telop.find('雨') > -1:
-#             telop_icon = ':umbrella:'
-#         elif telop.find('曇') > -1:
-#             telop_icon = ':cloud:'
-#         else:
-#             telop_icon = ':fire:'
-#
-#         text = title + '\n' + '今日の天気は' + telop + telop_icon + 'です！'
-#         message.send(text)
-#     else:
-#         message.send('都道府県で指定してください(北海道は道北/道東/道南/道央の中から指定)↓')
-#         message.send('例: weather! 東京')
-
-
-# # 電車遅延情報
-# @respond_to('delay!')
-# def train(message):
-#     url = 'https://tetsudo.rti-giken.jp/free/delay.json'
-#     html = urllib.request.urlopen(url)
-#     jsonfile = json.loads(html.read().decode('utf-8'))
-#
-#     for json_ in jsonfile:
-#         name = json_['name']
-#         company = json_['company']
-#         text = company + name + 'が遅延してるみたいです...'
-#         message.send(text)
 
 @respond_to('delay!')
 def train(message):
-    '''電車遅延情報を表示'''
+    '''train delay information'''
     search_word = message.body['text'].split()
+
     if len(search_word) == 2:
         url = 'https://tetsudo.rti-giken.jp/free/delay.json'
         html = urllib.request.urlopen(url)
@@ -179,6 +91,7 @@ def train(message):
         for json_ in jsonfile:
             name = json_['name']
             company = json_['company']
+
             if search_word[1] == name:
                 text = company + name + 'は遅延してるみたいです...'
                 message.send(text)
@@ -190,10 +103,11 @@ def train(message):
         message.send('例: delay! 山手線')
 
 
-# Qiita
 @respond_to('qiita!')
 def reply_qiita(message):
+    """search Qiita articles"""
     search_word = message.body['text'].split()
+
     if len(search_word) == 2:
         url = 'https://qiita.com/api/v2/items?page=1&per_page=5&query=stocks%3A%3E3'
         title = '+title' + '%3A' + search_word[1]
@@ -213,7 +127,6 @@ def reply_qiita(message):
         message.send('例: qiita! python')
 
 
-# 天気予報
 weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '012020',
                        '網走': '013010', '北見': '013020', '紋別': '013030',
                        '根室': '014010', '釧路': '014020', '帯広': '014030',
@@ -284,14 +197,17 @@ weather_dic = {'北海道': {'稚内': '011000', '旭川': '012010', '留萌': '
 
 @respond_to('weather!')
 def weather(message):
+    """weather forecast"""
     search_word = message.body['text'].split()
+
     if len(search_word) == 2:
+
         if weather_dic[search_word[1]] is not None:
             text = ""
+
             for key in weather_dic[search_word[1]]:
                 text += key + " "
             message.send('都市を選んで指定してください↓')
-            # text = weather_dic[search_word[1]].keys
             message.send(text)
             message.send('例: weather! 神奈川 横浜')
             exit()
@@ -300,8 +216,8 @@ def weather(message):
             message.send('例: weather! 東京')
             exit()
     elif len(search_word) == 3:
+
         if weather_dic[search_word[1]] is not None:
-            # for key in weather_dic[search_word[1]]:
             dic_city = weather_dic[search_word[1]]
             print("dic_city:", dic_city)
             print("dic_city[search_word[2]]:", dic_city[search_word[2]])
@@ -317,22 +233,20 @@ def weather(message):
             message.send('入力が正しくありません。都道府県で指定してください')
             exit()
 
-        # print("city:", city)
         city = urllib.parse.quote(city)
-        # print("city:", city)
-
         url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
         html = urllib.request.urlopen(url + city)
-        # print('html:', html)
         jsonfile = json.loads(html.read().decode('utf-8'))
         title = jsonfile['title']
         telop = jsonfile['forecasts'][0]['telop']
         telop_icon = ''
+
         if telop.find('雪') > -1:
             telop_icon = ':snowman:'
         elif telop.find('雷') > -1:
             telop_icon = ':thunder_cloud_and_rain:'
         elif telop.find('晴') > -1:
+
             if telop.find('曇') > -1:
                 telop_icon = ':partly_sunny:'
             elif telop.find('雨') > -1:
@@ -352,17 +266,16 @@ def weather(message):
         message.send('都道府県で指定してください↓')
         message.send('例: weather! 東京')
 
-# ヘルプ
+
 @respond_to('help!')
 def reply_hello(message):
+    """help"""
     attachments = [
         {
             'color': "#66CDAA",
             'fields': [
                 {'title': "コマンド", 'value': "help!", 'short': True},
                 {'title': "説明", 'value': "ヘルプを表示します", 'short': True},
-                # {'value': "todo!", 'short': True},
-                # {'value': "TODO機能を実行します", 'short': True},
                 {'value': "qiita! 検索ワード", 'short': True},
                 {'value': "Qiitaの記事を検索します", 'short': True},
                 {'value': "weather!", 'short': True},
