@@ -2,6 +2,11 @@
 
 #### これはあなたの日常を癒してくれる、メイド型Slackbot、for-ni-to(ふぉにと)です。
 
+## デモ
+
+<img src="https://github.com/akihanari/Slackbot/blob/images/demo.gif" alt="demo image" title="demo.gif" width="480" height="320">
+
+
 ## 主な機能
 
 + Qiita記事検索
@@ -10,9 +15,6 @@
 + カレンダー表示
 + 雑談
 
-## デモ
-
-<img src="https://github.com/akihanari/Slackbot/blob/images/demo.gif" alt="demo image" title="demo.gif" width="480" height="320">
 
 ## 使い方（コマンド）
 
