@@ -218,8 +218,6 @@ def weather(message):
 
         if weather_dic[search_word[1]] is not None:
             dic_city = weather_dic[search_word[1]]
-            print("dic_city:", dic_city)
-            print("dic_city[search_word[2]]:", dic_city[search_word[2]])
 
             if dic_city[search_word[2]] is not None:
                 city = dic_city[search_word[2]]
