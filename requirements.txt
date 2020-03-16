@@ -1,2 +1,6 @@
-pya3rt==1.1
-slackbot==0.5.6
+pya3rt=1.1
+requests=2.12.4
+six=1.14.0
+slackbot=0.5.6
+slacker=0.14.0
+websocket-client=0.44.0
